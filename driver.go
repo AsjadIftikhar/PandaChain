@@ -68,9 +68,7 @@ func ListBlocks(chainHead *Block) {
 	fmt.Println()
 	currPointer := chainHead
 	for i := 0; currPointer != nil; i++ {
-		fmt.Print(currPointer.transactions, " | ", currPointer.currentHash, " | ", currPointer.prevHash)
-		fmt.Println("<--")
-
+		fmt.Println("{\n\t", "Transaction: ", currPointer.transactions, "\n\t", "Hash: ", currPointer.currentHash, "\n\t", "Prev Hash: ", currPointer.prevHash, "\n}")
 		currPointer = currPointer.prevPointer
 	}
 
@@ -102,7 +100,7 @@ func main() {
 	chainHead = InsertBlock([]string{"Why am I Doing this?", "Such a bad assignment tbh!", "Lets finish it ASAP"}, chainHead)
 	chainHead = InsertBlock([]string{"Stupid Course"}, chainHead)
 
-	//ChangeBlock("Bob is Alive", "Bob is dead", chainHead)
+	ChangeBlock("Bob is Alive", "Bob is dead", chainHead)
 	ListBlocks(chainHead)
 	VerifyChain(chainHead)
 
